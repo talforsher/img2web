@@ -38,6 +38,7 @@
             border: none;
             cursor: pointer;
             min-width: 20px;
+            height: 0;
         }
 
         .hey .resizer {
@@ -68,19 +69,22 @@
             cursor: not-allowed;
             border-style: outset;
         }
+
+        .hey .input {
+            border: none;
+            background: none;
+        }
     </style>
 </head>
 
 <body onresize="size()">
     <img src="index.png">
-    <div id="buttons" style="width: 577px; height: 1099px;">
-        <div class="hey" style="top: 17.6524%; left: 3.98614%; width: 27.383%; padding-top: 27.1156%;">
+    <div id="buttons" style="width: 700px; height: 1333px;">
+        <div class="hey" style="top:17.5%; left: 25%" onclick="window.open(&quot;&quot;)">
+            
             
         </div>
-    <div class="hey" style="top: 17.6524%; left: 68.2842%; width: 27.383%; padding-top: 27.1156%;">
-        
-        
-        </div></div>
+    </div>
 
     <script>
         function size() {

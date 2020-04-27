@@ -1,5 +1,6 @@
 var buttons = document.querySelectorAll('.hey');
 buttons.forEach(button => actions(button))
+
 function actions(button) {
 
     var plus = button.getElementsByClassName("plus")[0]
@@ -9,15 +10,21 @@ function actions(button) {
         newButton.innerHTML = `
         <div class="plus">+</div>
         <div class="minus">-</div>
+        <input class="input" type="text">
         `
         document.getElementById("buttons").appendChild(newButton);
         newButton.setAttribute('style', this.parentElement.style.cssText)
-        newButton.style.top = (parseInt(newButton.style.top)+2)+'%'
+        newButton.style.top = (parseInt(newButton.style.top) + 2) + '%'
         actions(newButton)
         var minus = newButton.getElementsByClassName("minus")[0];
-        minus.addEventListener('click', function(){
+        minus.addEventListener('click', function () {
             newButton.remove()
         })
+    })
+
+    var input = button.getElementsByClassName("input")[0];
+    input.addEventListener('click', function () {
+        this.focus()
     })
 
     button.addEventListener('click', function init() {
@@ -95,3 +102,48 @@ function dragElement(elmnt) {
         document.onmousemove = null;
     }
 }
+
+function save() {
+    this.remove()
+    url = document.getElementsByClassName('input')
+    for (var i = 0; i < url.length; i++) {
+        var target = url[i]
+        target.parentElement.setAttribute('onclick', 'window.open("' + target.value + '")')
+    }
+    remove = url;
+    while (remove.length) {
+        remove[0].remove()
+    }
+    remove = document.getElementsByClassName('plus')
+    while (remove.length) {
+        remove[0].remove()
+    }
+    remove = document.getElementsByClassName('minus')
+    while (remove.length) {
+        remove[0].remove()
+    }
+    remove = document.getElementsByClassName('resizer')
+    while (remove.length) {
+        remove[0].remove()
+    }
+    document.getElementById('script').remove()
+    document.getElementById('editStyle').remove()
+    scrape = document.documentElement.outerHTML
+
+    fetch('receive', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            filename: 'tada.html',
+            content: scrape
+        })
+    })
+
+}
+var saveButton = document.createElement('button')
+saveButton.innerText = "Save"
+saveButton.style = "position: absolute; width:100%"
+saveButton.onclick = save;
+document.body.appendChild(saveButton);

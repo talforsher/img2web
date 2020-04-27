@@ -41,6 +41,7 @@
             border: none;
             cursor: pointer;
             min-width: 20px;
+            height: 0;
         }
 
         .hey .resizer {
@@ -71,6 +72,11 @@
             cursor: not-allowed;
             border-style: outset;
         }
+
+        .hey .input {
+            border: none;
+            background: none;
+        }
     </style>
 </head>
 
@@ -79,6 +85,7 @@
     <div id="buttons">
         <div class="hey" style="top:17.5%; left: 25%">
             <div class="plus">+</div>
+            <input type="text" class="input">
         </div>
     </div>
 
