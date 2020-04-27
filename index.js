@@ -14,7 +14,7 @@ app.use(cors({
     origin: 'http://localhost:3001'
   }));
   app.use(express.static('public',{extensions: ['html', 'htm']}))
-  app.get("/", (res, req)=>{
+  app.get("/", (res, req)=>{np
     req.end(express.static('/index'))
   })
 
@@ -28,4 +28,7 @@ app.post('/receive', function(request, respond) {
     )
     respond.end("Thank You")
 });
-app.listen(3000);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
