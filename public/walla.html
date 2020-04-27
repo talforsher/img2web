@@ -1,0 +1,99 @@
+<html lang="en"><head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-164123062-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-164123062-1');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="העסקים במושב בני עטרות. צומת הטייסים">
+    <title>Img2Web</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        img {
+            width: 100%;
+            position: absolute;
+        }
+
+        #buttons {
+            position: absolute;
+        }
+
+        .hey {
+            position: absolute;
+            width: 10%;
+            padding-top: 10%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            min-width: 20px;
+            min-height: 20px;
+        }
+
+        .hey .resizer {
+            width: 5px;
+            height: 5px;
+            border-radius: 100%;
+            background: blue;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            cursor: se-resize;
+        }
+
+        .hey .plus {
+            background: green;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: cell;
+            border-style: outset;
+        }
+
+        .hey .minus {
+            background: red;
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: not-allowed;
+            border-style: outset;
+        }
+    </style>
+</head>
+
+<body onresize="size()">
+    <img src="index.png">
+    <div id="buttons" style="width: 460px; height: 876px;">
+        <div class="hey" style="top:17.5%; left: 25%">
+            <p contenteditable="true">#</p>
+            
+        </div>
+    </div>
+
+    <script>
+        function size() {
+            const [x, y] = [document.getElementsByTagName("img")[0].width,
+                document.getElementsByTagName("img")[0].height
+            ];
+            document.getElementById("buttons").style = "width:" + x + "px; height:" + y + "px;";
+        }
+        document.body.onload = function () {
+            size()
+        }
+    </script>
+    
+    
+
+
+</body></html>
