@@ -1,7 +1,6 @@
 var express = require('express'),
     fs = require('fs')
     url = require('url')
-    cors = require('cors');
     bodyParser = require('body-parser');
 var app = express();
 
@@ -10,9 +9,6 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
-app.use(cors({
-    origin: 'http://localhost:3001'
-  }));
   app.use(express.static('public',{extensions: ['html', 'htm']}))
   app.get("/", (res, req)=>{np
     req.end(express.static('/index'))
