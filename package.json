@@ -1,0 +1,21 @@
+{
+  "name": "Img2Web",
+  "version": "1.0.0",
+  "description": "From image to website in seconds",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "node"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "jane-doe",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.0"
+  },
+  "engines": {
+    "node": "10.x"
+  }
+}
