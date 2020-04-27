@@ -2,7 +2,7 @@
   "name": "Img2Web",
   "version": "1.0.0",
   "description": "From image to website in seconds",
-  "main": "public",
+  "main": "index.js",
   "scripts": {
     "start": "node"
   },
