@@ -36,7 +36,7 @@ function actions(button) {
         startX = e.clientX;
         startY = e.clientY;
         startWidth = parseInt(document.defaultView.getComputedStyle(button).width, 10);
-        startHeight = parseInt(document.defaultView.getComputedStyle(button).height, 10);
+        startHeight = parseInt(document.defaultView.getComputedStyle(button).paddingTop, 10);
         document.documentElement.addEventListener('mousemove', doDrag, false);
         document.documentElement.addEventListener('mouseup', stopDrag, false);
     }
