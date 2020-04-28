@@ -1,12 +1,37 @@
+(function () {
+    var newButton = document.createElement('div')
+    newButton.classList.add('hey')
+    newButton.classList.add('new')
+    newButton.innerHTML = `
+        <div class="plus">+</div>
+        <div class="minus">-</div>
+        <input class="input" type="text">
+        <div class="resizer"></div>
+        `
+    document.querySelector('#buttons').appendChild(newButton);
+})()
 var buttons = document.querySelectorAll('.hey');
 buttons.forEach(button => actions(button))
 
 function actions(button) {
-
+    if (!button.classList.contains('new')) {
+        button.innerHTML += `
+        <div class="plus">+</div>
+        <div class="minus">-</div>
+        <input class="input" type="text">
+        <div class="resizer"></div>
+        `
+        button.onclick = ""
+    }
+    var minus = button.getElementsByClassName("minus")[0];
+    minus.addEventListener('click', function () {
+        button.remove()
+    })
     var plus = button.getElementsByClassName("plus")[0]
     plus.addEventListener('click', function () {
         var newButton = document.createElement('div')
         newButton.classList.add('hey')
+        newButton.classList.add('new')
         newButton.innerHTML = `
         <div class="plus">+</div>
         <div class="minus">-</div>
@@ -110,8 +135,15 @@ function save() {
         var target = url[i]
         target.parentElement.setAttribute('onclick', 'window.open("' + target.value + '")')
     }
+    news = document.getElementsByClassName('new')
+    while (news.length) {
+        news[0].classList.remove('new')
+    }
     remove = url;
+    const urls = []
     while (remove.length) {
+        if (remove[0].value.slice(0, 4) == "page")
+            urls.push(remove[0].value.split(' ')[1])
         remove[0].remove()
     }
     remove = document.getElementsByClassName('plus')
@@ -126,18 +158,21 @@ function save() {
     while (remove.length) {
         remove[0].remove()
     }
-    document.getElementById('script').remove()
-    document.getElementById('editStyle').remove()
+    document.getElementById('newImage').remove()
     scrape = document.documentElement.outerHTML
-
-    fetch('receive', {
+    var path = location.pathname.slice(1);
+    if (path == '')
+        path = 'index'
+    path += ".html"
+    fetch('save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            filename: 'tada.html',
-            content: scrape
+            filename: path,
+            content: scrape,
+            urls: urls
         })
     })
 
@@ -147,3 +182,35 @@ saveButton.innerText = "Save"
 saveButton.style = "position: absolute; width:100%"
 saveButton.onclick = save;
 document.body.appendChild(saveButton);
+
+var newImage = document.createElement('form')
+newImage.onchange = function () {
+    const XHR = new XMLHttpRequest();
+
+    // Bind the FormData object and the form element
+    const FD = new FormData(newImage);
+
+    // Define what happens on successful data submission
+    XHR.addEventListener("load", function (event) {
+        document.getElementById('img').src = JSON.parse(event.target.responseText).filename
+    });
+
+    // Define what happens in case of error
+    XHR.addEventListener("error", function (event) {
+        alert('Oops! Something went wrong.');
+    });
+
+    // Set up our request
+    XHR.open("POST", "upload");
+
+    // The data sent is what the user provided in the form
+    XHR.send(FD);
+
+
+
+}
+newImage.id = 'newImage'
+newImage.enctype = 'multipart/form-data'
+newImage.innerHTML = `<input type="file" name="file" accept="image/*" />`
+newImage.style = "position: fixed; width:30%; bottom: 0; margin: 0"
+document.body.appendChild(newImage);
