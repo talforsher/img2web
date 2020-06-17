@@ -1,90 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
+    
+    <head>
 
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164123062-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-164123062-1');
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="העסקים במושב בני עטרות. צומת הטייסים">
-    <title>Img2Web</title>
-    <style>
-        body {
-            margin: 0;
-        }
-
-        img {
-            width: 100%;
-            position: absolute;
-        }
-
-        #buttons {
-            position: absolute;
-        }
-
-        .hey {
-            position: absolute;
-            width: 10%;
-            padding-top: 10%;
-            background: none;
-            border: none;
-            cursor: pointer;
-            min-width: 20px;
-            min-height: 20px;
-        }
-
-        .hey .resizer {
-            width: 5px;
-            height: 5px;
-            border-radius: 100%;
-            background: blue;
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            cursor: se-resize;
-        }
-
-        .hey .plus {
-            background: green;
-            position: absolute;
-            left: 0;
-            top: 0;
-            cursor: cell;
-            border-style: outset;
-        }
-
-        .hey .minus {
-            background: red;
-            position: absolute;
-            right: 0;
-            top: 0;
-            cursor: not-allowed;
-            border-style: outset;
-        }
-    </style>
-</head>
-
-<body onresize="size()">
-    <img src="index.png">
-    <div id="buttons">
-        <div class="hey" style="top:17.5%; left: 25%">
-            <input type="text" name="" id="">
-            <div class="plus">+</div>
-        </div>
-    </div>
-
-    <script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Buit with Tal Forsher CMS">
+<meta name="keywords" content="Tal Forsher">
+<meta name="robots" content="index, follow">
+        <title>Tenerife Project</title>
+        <style>
+            body {
+                margin: 0;
+            }
+    
+            img {
+                width: 100%;
+                position: absolute;
+            }
+    
+            #buttons {
+                position: absolute;
+            }
+    
+            .hey {
+                position: absolute;
+                width: 10%;
+                padding-top: 10%;
+                background: none;
+                border: none;
+                cursor: pointer;
+                min-width: 20px;
+                height: 0;
+            }
+    
+            .hey .resizer {
+                width: 5px;
+                height: 5px;
+                border-radius: 100%;
+                background: blue;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                cursor: se-resize;
+            }
+    
+            .hey .plus {
+                background: green;
+                position: absolute;
+                left: 0;
+                top: 0;
+                cursor: cell;
+                border-style: outset;
+            }
+    
+            .hey .minus {
+                background: red;
+                position: absolute;
+                right: 0;
+                top: 0;
+                cursor: not-allowed;
+                border-style: outset;
+            }
+    
+            .hey .input {
+                border: none;
+                background: none;
+            }
+        </style>
+    </head><body onresize="size()"><img id="Main Website Image" src="">
+	<div id="buttons" style="width: 1349px; height: 2916px;"></div>
+	
+<script id="indexScript">
         function size() {
             const [x, y] = [document.getElementsByTagName("img")[0].width,
                 document.getElementsByTagName("img")[0].height
@@ -94,9 +81,26 @@
         document.body.onload = function () {
             size()
         }
-    </script>
-    <script id="script" src="edit.js"></script>
-    <link id="editStyle" rel="stylesheet" type="text/css" href="edit.css">
-</body>
 
-</html>
+        fetch('editjs')
+            .then(res => res.text())
+            .then(res => {
+                eval(res)
+            })
+
+        fetch('editcss')
+            .then(res => res.text())
+            .then(res => {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                document.getElementsByTagName('head')[0].appendChild(style);
+
+                //here is the magic.
+                style.innerHTML = res;
+            })
+    </script>
+    
+
+
+
+</body></html>
