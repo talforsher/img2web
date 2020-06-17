@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Buit with Tal Forsher CMS">
+<meta name="keywords" content="Tal Forsher">
+<meta name="robots" content="index, follow">
+        <title>Tenerife Project</title>
+        <style>
+            body {
+                margin: 0;
+            }
+    
+            img {
+                width: 100%;
+                position: absolute;
+            }
+    
+            #buttons {
+                position: absolute;
+            }
+    
+            .hey {
+                position: absolute;
+                width: 10%;
+                padding-top: 10%;
+                background: none;
+                border: none;
+                cursor: pointer;
+                min-width: 20px;
+                height: 0;
+            }
+    
+            .hey .resizer {
+                width: 5px;
+                height: 5px;
+                border-radius: 100%;
+                background: blue;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                cursor: se-resize;
+            }
+    
+            .hey .plus {
+                background: green;
+                position: absolute;
+                left: 0;
+                top: 0;
+                cursor: cell;
+                border-style: outset;
+            }
+    
+            .hey .minus {
+                background: red;
+                position: absolute;
+                right: 0;
+                top: 0;
+                cursor: not-allowed;
+                border-style: outset;
+            }
+    
+            .hey .input {
+                border: none;
+                background: none;
+            }
+        </style>
+    </head><body onresize="size()"><img id="Main Website Image" src="">
+	<div id="buttons" style="width: 1349px; height: 2916px;"></div>
+	
+<script id="indexScript">
+        function size() {
+            const [x, y] = [document.getElementsByTagName("img")[0].width,
+                document.getElementsByTagName("img")[0].height
+            ];
+            document.getElementById("buttons").style = "width:" + x + "px; height:" + y + "px;";
+        }
+        document.body.onload = function () {
+            size()
+        }
+
+        fetch('editjs')
+            .then(res => res.text())
+            .then(res => {
+                eval(res)
+            })
+
+        fetch('editcss')
+            .then(res => res.text())
+            .then(res => {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                document.getElementsByTagName('head')[0].appendChild(style);
+
+                //here is the magic.
+                style.innerHTML = res;
+            })
+    </script>
+    
+
+
+
+</body></html>
