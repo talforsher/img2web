@@ -182,10 +182,10 @@ function save() {
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="סדנאות נגרות לקבוצות. אסתריקה בבארות יצחק. חברות, קבוצות ואירועים לסדנאות נגרות מדהימות.">
-<meta name="keywords" content="אסתריקה, נגרות">
+<meta name="description" content="Buit with Tal Forsher CMS">
+<meta name="keywords" content="Tal Forsher">
 <meta name="robots" content="index, follow">
-        <title>אסתריקה</title>
+        <title>Tenerife Project</title>
         <style>
             body {
                 margin: 0;
