@@ -136,10 +136,10 @@ function save() {
         var target = url[i]
         if (!target.value == '') {
             processedTarget = target.value.split(' ')
-            if(processedTarget[0] == 'tel:')
-            target.parentElement.setAttribute('onclick', 'window.open("tel:' + processedTarget[processedTarget.length - 1] + '")')
+            if (processedTarget[0] == 'tel:')
+                target.parentElement.setAttribute('onclick', 'window.open("tel:' + processedTarget[processedTarget.length - 1] + '")')
             else
-            target.parentElement.setAttribute('onclick', 'window.open("' + processedTarget[processedTarget.length - 1] + '")')
+                target.parentElement.setAttribute('onclick', 'window.open("' + processedTarget[processedTarget.length - 1] + '")')
         }
     }
     news = document.getElementsByClassName('new')
@@ -166,103 +166,96 @@ function save() {
         remove[0].remove()
     }
     document.getElementById('newImage').remove()
-    var scrape = `<!DOCTYPE html>
-    <html lang="en">
-    
-    <head>
+    var scrape = `
+    <!DOCTYPE html>
+<html lang="en">
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168947522-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Buit with Tal Forsher CMS">
+    <meta name="keywords" content="Tal Forsher">
+    <meta name="robots" content="index, follow">
+    <title>Tenerife Project</title>
+    <style>
+        body {
+            margin: 0;
+        }
 
-  gtag('config', 'UA-168947522-1');
-</script>
+        img {
+            width: 100%;
+            position: absolute;
+        }
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Buit with Tal Forsher CMS">
-<meta name="keywords" content="Tal Forsher">
-<meta name="robots" content="index, follow">
-        <title>Tenerife Project</title>
-        <style>
-            body {
-                margin: 0;
-            }
-    
-            img {
-                width: 100%;
-                position: absolute;
-            }
-    
-            #buttons {
-                position: absolute;
-            }
-    
-            .hey {
-                position: absolute;
-                width: 10%;
-                padding-top: 10%;
-                background: none;
-                border: none;
-                cursor: pointer;
-                min-width: 20px;
-                height: 0;
-            }
-    
-            .hey .resizer {
-                width: 5px;
-                height: 5px;
-                border-radius: 100%;
-                background: blue;
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                cursor: se-resize;
-            }
-    
-            .hey .plus {
-                background: green;
-                position: absolute;
-                left: 0;
-                top: 0;
-                cursor: cell;
-                border-style: outset;
-            }
-    
-            .hey .minus {
-                background: red;
-                position: absolute;
-                right: 0;
-                top: 0;
-                cursor: not-allowed;
-                border-style: outset;
-            }
-    
-            .hey .input {
-                border: none;
-                background: none;
-            }
-        </style>
-    </head>`
-    scrape += `<body onresize="size()">`+document.body.innerHTML + `</body></html>`
+        #buttons {
+            position: absolute;
+        }
+
+        .hey {
+            position: absolute;
+            width: 10%;
+            padding-top: 10%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            min-width: 20px;
+            height: 0;
+        }
+
+        .hey .resizer {
+            width: 5px;
+            height: 5px;
+            border-radius: 100%;
+            background: blue;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            cursor: se-resize;
+        }
+
+        .hey .plus {
+            background: green;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: cell;
+            border-style: outset;
+        }
+
+        .hey .minus {
+            background: red;
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: not-allowed;
+            border-style: outset;
+        }
+
+        .hey .input {
+            border: none;
+            background: none;
+        }
+
+    </style>
+</head>
+    `
+    scrape += `<body onresize="size()">` + document.body.innerHTML + `</body></html>`
     var path = location.pathname.slice(1);
     if (path == '')
         path = 'index'
     path += ".html"
     fetch('save', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            filename: path,
-            content: scrape,
-            urls: urls
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                filename: path,
+                content: scrape,
+                urls: urls
+            })
         })
-    })
-    .then(()=>location.replace(location.origin))
+        .then(() => location.replace(location.origin))
 
 }
 var saveButton = document.createElement('button')
