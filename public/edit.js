@@ -142,8 +142,11 @@ function save() {
             processedTarget = target.value.split(' ')
             if (processedTarget[0] == 'tel:')
                 target.parentElement.setAttribute('onclick', 'window.open("tel:' + processedTarget[processedTarget.length - 1] + '")')
-            else
-                target.parentElement.setAttribute('onclick', 'window.open("' + processedTarget[processedTarget.length - 1] + '")')
+            if (processedTarget[0] == 'video:'){
+                const iframe = document.createElement("iframe")
+                iframe.src= "https://www.youtube.com/embed/H1h25r7yWIA"
+                target.parentElement.append(iframe)
+            }
         }
     }
     news = document.getElementsByClassName('new')
