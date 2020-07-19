@@ -4,7 +4,7 @@
     newButton.classList.add('new')
     newButton.style = `
     left: 42%;
-    top: 2%;
+    top: 2  %;
     width: 15%;
     padding-top: 4%;`
     newButton.innerHTML = `
@@ -153,6 +153,8 @@ function save() {
                 iframe.src = processedTarget[processedTarget.length - 1]
                 target.parentElement.append(iframe)
             }
+            else
+                target.parentElement.setAttribute('onclick', 'window.open("' + processedTarget[processedTarget.length - 1] + '")')
         }
     }
     news = document.getElementsByClassName('new')
