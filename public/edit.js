@@ -276,7 +276,14 @@ function save() {
 }
 var saveButton = document.createElement('button')
 saveButton.innerText = "Save"
-saveButton.style = "position: absolute; width:100%"
+saveButton.style = `
+position: absolute;
+width: 100%;
+background: #0000000d;
+color: black;
+border-width: 8px;
+border-style: solid;
+border-color: #ff000014;`
 saveButton.onclick = save;
 document.body.appendChild(saveButton);
 
