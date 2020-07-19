@@ -275,7 +275,7 @@ function save() {
 
 }
 var saveButton = document.createElement('button')
-saveButton.innerText = "Save"
+saveButton.innerText = "Save and Deploy"
 saveButton.style = "position: absolute; width:100%"
 saveButton.onclick = save;
 document.body.appendChild(saveButton);
