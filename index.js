@@ -3,6 +3,7 @@ var express = require('express'),
   url = require('url'),
   multer = require('multer')
 bodyParser = require('body-parser');
+const { exec } = require('child_process');
 var app = express();
 
 var upload = multer({
@@ -53,7 +54,14 @@ app.post('/save', function (request, respond) {
       console.log("saved " + element)
     })
   });
-  respond.end("Thank You")
+  exec('bash deploy.bat', (err) => {
+    if (err) {
+      console.error(err)
+    } else {
+     console.log(`deployed`);
+    }
+  });
+  respond.end()
 });
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
