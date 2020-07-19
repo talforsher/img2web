@@ -4,7 +4,7 @@
     newButton.classList.add('new')
     newButton.style = `
     left: 42%;
-    top: 2  %;
+    top: 20px;
     width: 15%;
     padding-top: 4%;`
     newButton.innerHTML = `
