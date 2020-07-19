@@ -142,9 +142,15 @@ function save() {
             processedTarget = target.value.split(' ')
             if (processedTarget[0] == 'tel:')
                 target.parentElement.setAttribute('onclick', 'window.open("tel:' + processedTarget[processedTarget.length - 1] + '")')
-            if (processedTarget[0] == 'video:'){
+            if (processedTarget[0] == 'video:') {
                 const iframe = document.createElement("iframe")
-                iframe.src= processedTarget[processedTarget.length - 1]
+                iframe.src = "https://www.youtube.com/embed/H1h25r7yWIA"
+                iframe.frameborder = "0"
+                iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                iframe.allowfullscreen = ""
+                iframe.style = "/* position: absolute; *//* width: 95vw; *//* height: 50vh; */position: absolute;top: 0;left: 0;width: 100%;height: 100%;"
+                iframe.id = "iframe"
+                iframe.src = processedTarget[processedTarget.length - 1]
                 target.parentElement.append(iframe)
             }
         }
