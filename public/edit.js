@@ -4,9 +4,9 @@
     newButton.classList.add('new')
     newButton.style = `
     left: 42%;
-    top: 4%;
+    top: 2%;
     width: 15%;
-    padding-top: 2%;`
+    padding-top: 4%;`
     newButton.innerHTML = `
         <div class="plus">+</div>
         <div class="minus">-</div>
