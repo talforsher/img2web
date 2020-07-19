@@ -2,7 +2,11 @@
     var newButton = document.createElement('div')
     newButton.classList.add('hey')
     newButton.classList.add('new')
-    newButton.style = "left: 45%"
+    newButton.style = `
+    left: 42%;
+    top: 4%;
+    width: 15%;
+    padding-top: 3%;`
     newButton.innerHTML = `
         <div class="plus">+</div>
         <div class="minus">-</div>
