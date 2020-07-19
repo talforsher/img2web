@@ -6,7 +6,7 @@
     left: 42%;
     top: 4%;
     width: 15%;
-    padding-top: 3%;`
+    padding-top: 4%;`
     newButton.innerHTML = `
         <div class="plus">+</div>
         <div class="minus">-</div>
