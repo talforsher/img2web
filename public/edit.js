@@ -176,6 +176,7 @@ function save() {
     <meta name="description" content="Buit with Tal Forsher CMS">
     <meta name="keywords" content="Tal Forsher">
     <meta name="robots" content="index, follow">
+    <link rel="icon" href="dksimulations.jpg">
     <title>Tenerife Project</title>
     <style>
         body {

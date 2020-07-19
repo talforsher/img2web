@@ -8,6 +8,7 @@
     <meta name="description" content="Buit with Tal Forsher CMS">
     <meta name="keywords" content="Tal Forsher">
     <meta name="robots" content="index, follow">
+    <link rel="icon" href="dksimulations.jpg">
     <title>Tenerife Project</title>
     <style>
         body {
@@ -70,49 +71,20 @@
 
     </style>
 </head>
-    <body onresize="size()"><img id="img" src="a50ed266d44ad36364cf3b253e48bf4a">
-    <div id="buttons" style="width: 1284px; height: 2446px;">
-    <div class="hey" style="left: 32.1651%; top: 29.5993%; width: 35.514%; padding-top: 31.9951%;">
-        
-        
-        
-
-        </div><div class="hey" style="left: 32.0093%; top: 52.6574%; width: 35.514%; padding-top: 31.9951%;">
-        
-        
-        
-        </div><div class="hey" style="left: 32.1651%; top: 74.9387%; width: 35.514%; padding-top: 31.9951%;">
-        
-        
-        
-        </div></div>
-
+    <body onresize="size()"><img id="img" src="ph.png">
+    <div id="buttons" style="width: 874px; height: 582px;">
+    </div>
     <script id="indexScript">
         function size() {
             const [x, y] = [document.getElementsByTagName("img")[0].width,
                 document.getElementsByTagName("img")[0].height
             ];
             document.getElementById("buttons").style = "width:" + x + "px; height:" + y + "px;";
-            var lastChance = 0
-            var fadeTarget = document.getElementsByClassName("splash")[0];
-            var fadeEffect = setInterval(function () {
-                lastChance++
-                if (lastChance == 10)
-                    clearInterval(fadeEffect)
-                if (!fadeTarget.style.opacity) {
-                    fadeTarget.style.opacity = 1;
-                }
-                if (fadeTarget.style.opacity > 0) {
-                    fadeTarget.style.opacity -= 0.1;
-                } else {
-                    clearInterval(fadeEffect);
-                }
-            }, 40);
         }
         document.body.onload = function () {
             size()
         }
-        if (location.href.match("edit")) {
+        if (location.href.match("edit") != null) {
             fetch('editjs')
                 .then(res => res.text())
                 .then(res => {
@@ -131,6 +103,8 @@
                 })
         }
     </script>
+
+
 
 
 
