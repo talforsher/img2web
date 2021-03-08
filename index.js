@@ -4,6 +4,7 @@ var express = require('express'),
   multer = require('multer')
 bodyParser = require('body-parser');
 const { exec } = require('child_process');
+var sharp = require('sharp');
 var app = express();
 
 var upload = multer({
@@ -70,12 +71,15 @@ app.listen(PORT, () => {
 
 
 app.post('/upload', upload.single('file'), (req, res, next) => {
+  const rand = Math.round(Math.random()*1000)
+  const newPath = 'public\\img'+rand+'.webp'
   const file = req.file
   if (!file) {
     const error = new Error('Please upload a file')
     error.httpStatusCode = 400
     return next(error)
   }
-  res.send(file)
-
+  sharp(__dirname + "\\" +file.path).toFile(newPath, (err, info) => { 
+    res.end(String(rand))
+  });
 })
