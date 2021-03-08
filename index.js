@@ -54,7 +54,7 @@ app.post('/save', function (request, respond) {
       console.log("saved " + element)
     })
   });
-  exec('bash deploy.bat', (err) => {
+  exec('deploy.bat', (err) => {
     if (err) {
       console.error(err)
     } else {
