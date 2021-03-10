@@ -290,6 +290,7 @@ newImage.onchange = function () {
     XHR.addEventListener("load", function (event) {
 console.log(event.target.response)
         document.getElementById('img').src = "img"+event.target.response+".webp"
+        document.getElementById('img').alt = "the background of the website, and the main content"
     });
 
     // Define what happens in case of error
