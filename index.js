@@ -1,10 +1,12 @@
 var express = require('express'),
   fs = require('fs'),
+  sharp = require('sharp'),
   url = require('url'),
-  multer = require('multer')
-bodyParser = require('body-parser');
+  multer = require('multer'),
+  prettify = require('html-prettify'),
+  bodyParser = require('body-parser');
 const { exec } = require('child_process');
-var sharp = require('sharp');
+
 var app = express();
 
 var upload = multer({
@@ -44,12 +46,12 @@ app.get('/editcss', function (req, res) {
 app.post('/save', function (request, respond) {
   const filename = request.body.filename
   const content = request.body.content
-  fs.writeFile('public/' + filename, content, function () {
+  fs.writeFile('public/' + filename, prettify(content), function () {
     console.log("saved " + filename)
   })
   const urls = request.body.urls;
   urls.forEach(element => {
-    fs.writeFile('public/' + element + '.html', content, {
+    fs.writeFile('public/' + element + '.html', prettify(content), {
       flag: 'wx'
     }, function () {
       console.log("saved " + element)
