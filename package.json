@@ -18,7 +18,7 @@
     "nodemon": "^2.0.3",
     "sharp": "^0.27.2",
     "webp-converter": "^2.3.3",
-    "html-prettify": "^1.0.3"
+    "pretty": "^2.0.0"
   },
   "engines": {
     "node": "10.x"
