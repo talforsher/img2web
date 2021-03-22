@@ -3,7 +3,7 @@ var express = require('express'),
   sharp = require('sharp'),
   url = require('url'),
   multer = require('multer'),
-  prettify = require('html-prettify'),
+  pretty = require('pretty'),
   bodyParser = require('body-parser');
 const { exec } = require('child_process');
 
@@ -46,12 +46,12 @@ app.get('/editcss', function (req, res) {
 app.post('/save', function (request, respond) {
   const filename = request.body.filename
   const content = request.body.content
-  fs.writeFile('public/' + filename, prettify(content), function () {
+  fs.writeFile('public/' + filename, pretty(content), function () {
     console.log("saved " + filename)
   })
   const urls = request.body.urls;
   urls.forEach(element => {
-    fs.writeFile('public/' + element + '.html', prettify(content), {
+    fs.writeFile('public/' + element + '.html', pretty(content), {
       flag: 'wx'
     }, function () {
       console.log("saved " + element)
